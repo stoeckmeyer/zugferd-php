@@ -21,6 +21,7 @@ use Easybill\ZUGFeRD211\Model\LineTradeAgreement;
 use Easybill\ZUGFeRD211\Model\LineTradeDelivery;
 use Easybill\ZUGFeRD211\Model\LineTradeSettlement;
 use Easybill\ZUGFeRD211\Model\Note;
+use Easybill\ZUGFeRD211\Model\ProcuringProject;
 use Easybill\ZUGFeRD211\Model\Quantity;
 use Easybill\ZUGFeRD211\Model\SupplyChainEvent;
 use Easybill\ZUGFeRD211\Model\SupplyChainTradeLineItem;
@@ -111,6 +112,12 @@ Handelsregisternummer: H A 123
         $invoice->supplyChainTradeTransaction->applicableHeaderTradeAgreement = new HeaderTradeAgreement();
         $invoice->supplyChainTradeTransaction->applicableHeaderTradeAgreement->buyerReference = '04011000-12345-34';
 
+
+        $invoice->supplyChainTradeTransaction->applicableHeaderTradeAgreement->specifiedProcuringProject = $procuringProject = new ProcuringProject();
+        $procuringProject->id = Id::create('PRJ1337');
+        $procuringProject->name = 'Projekt Leet';
+
+
         $invoice->supplyChainTradeTransaction->applicableHeaderTradeAgreement->buyerTradeParty = $buyerTradeParty = new TradeParty();
         $buyerTradeParty->id = Id::create('1034567');
         $buyerTradeParty->name = 'Max Mustermann';
@@ -188,6 +195,9 @@ Handelsregisternummer: H A 123
         $summation->duePayableAmount = Amount::create('529.87');
 
         $xml = Builder::create()->transform($invoice);
+
+        file_put_contents('magic.xml', $xml);
+
         self::assertNotEmpty($xml);
         $referenceFile = file_get_contents(__DIR__ . '/official_example_xml/zugferd_2p1_XRECHNUNG_Einfach.xml');
         $referenceFile = ReaderAndBuildTest::reformatXml($referenceFile);

@@ -212,6 +212,10 @@ Handelsregisternummer: H A 123
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
       </ram:BuyerTradeParty>
+      <ram:SpecifiedProcuringProject>
+        <ram:ID>PRJ1337</ram:ID>
+        <ram:Name>Projekt Leet</ram:Name>
+      </ram:SpecifiedProcuringProject>
     </ram:ApplicableHeaderTradeAgreement>
     <ram:ApplicableHeaderTradeDelivery>
       <ram:ActualDeliverySupplyChainEvent>
