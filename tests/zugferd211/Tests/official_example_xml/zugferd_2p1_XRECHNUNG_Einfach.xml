@@ -115,6 +115,9 @@ Handelsregisternummer: H A 123
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
         <ram:LineID>1</ram:LineID>
+        <ram:IncludedNote>
+          <ram:Content>Trennblätter mit eigener Beschriftung nach Dateivorgabe</ram:Content>
+        </ram:IncludedNote>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
         <ram:GlobalID schemeID="0160">4012345001235</ram:GlobalID>
