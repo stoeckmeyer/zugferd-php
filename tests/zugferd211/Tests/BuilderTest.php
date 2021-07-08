@@ -195,9 +195,6 @@ Handelsregisternummer: H A 123
         $summation->duePayableAmount = Amount::create('529.87');
 
         $xml = Builder::create()->transform($invoice);
-
-        file_put_contents('magic.xml', $xml);
-
         self::assertNotEmpty($xml);
         $referenceFile = file_get_contents(__DIR__ . '/official_example_xml/zugferd_2p1_XRECHNUNG_Einfach.xml');
         $referenceFile = ReaderAndBuildTest::reformatXml($referenceFile);
